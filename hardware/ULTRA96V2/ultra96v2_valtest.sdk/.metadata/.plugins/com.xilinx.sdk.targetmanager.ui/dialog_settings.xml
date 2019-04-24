@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="ultra96v2_valtest_wrapper.bit" key="ultra96v2_valtest_wrapper_hw_platform_0-bitFile"/>
+	<item value="ultra96v2_valtest_wrapper_hw_platform_0" key="programfpga.hwplatform"/>
+	<item value="false" key="ultra96v2_valtest_wrapper_hw_platform_0-partial_bit"/>
+	<item value="" key="ultra96v2_valtest_wrapper_hw_platform_0-bmmFile"/>
+	<item value="Auto Detect" key="ultra96v2_valtest_wrapper_hw_platform_0-device"/>
+	<item value="Local" key="ultra96v2_valtest_wrapper_hw_platform_0-target"/>
+</section>

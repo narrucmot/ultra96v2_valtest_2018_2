@@ -1,0 +1,75 @@
+/include/ "system-conf.dtsi"
+/ {
+//	sdhci1_pwrseq: sdhci1_pwrseq {
+//		compatible = "mmc-pwrseq-simple";
+//		reset-gpios = <&gpio 79 1>;  // EMIO[1] for RESETN, Active low
+//		post-power-on-delay-ms = <10>;
+//	};
+};
+
+/* Set pinctrl groups for the WILC3000 GPIO and SDIO */
+
+
+//&pinctrl0 {
+//	status = "okay";
+//	pinctrl_sdio1_default: sdio1-default {
+//		mux {
+//			groups = "sdio1_grp";
+//			function = "sdio1";
+//		};
+//
+//		conf {
+//			groups = "sdio1_grp";
+//			bias-pull-up;
+//			slew-rate = <1>;  /* SLEW_RATE_SLOW */
+//			io-standard = <1>; /* IO_STANDARD_LVCMOS18 */
+//		};
+//	};
+//
+//	pinctrl_wilc3000_gpio: wilc3000-gpio {
+//		mux {
+//			groups = "gpio0_7_grp", "gpio0_8_grp", "gpio0_76_grp" ;
+//			function = "gpio0";
+//		};
+//
+//		conf {
+//			groups = "gpio0_7_grp", "gpio0_8_grp";
+//			slew-rate = <1>;  /* SLEW_RATE_SLOW */
+//			io-standard = <1>; /* IO_STANDARD_LVCMOS18 */
+//		};
+//
+//		conf-outputs {
+//			pins = "MIO7", "MIO8";
+//			bias-pull-down;
+//		};
+//
+//		conf-inputs {
+//			pins = "MIO76";
+//			bias-pull-up;
+//			io-standard = <1>; /* IO_STANDARD_LVCMOS18 */
+//			schmitt-cmos = <0>; /* PIN_INPUT_TYPE_CMOS */
+//		};
+//
+//	};
+//};
+
+
+&sdhci1 {
+	status = "okay";
+	bus-width= <4>;
+	max-frequency = <50000000>;
+	non-removeable;
+//	mmc-pwrseq = <&sdhci1_pwrseq>;
+
+   wilc_sdio@0 {
+		status = "okay";
+      reg = <0>; 
+      compatible = "microchip,wilc3000";
+		chip_en-gpios = <&gpio 8 0>;  	/* MIO[8] */
+//TC      reset-gpios = <&gpio 7 0>;	/* MIO[7] */
+      reset-gpios = <&gpio 78 1>;  // device pin A3 for RESETN, Active low, JT5 strapped to pins 1-2
+		irq-gpios = <&gpio 76 1>;	/* MIO[76] */
+		bus-width = <4>;
+	};
+};
+

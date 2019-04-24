@@ -1,0 +1,41 @@
+/include/ "system-conf.dtsi"
+/ {
+
+   /* WILC3000 module: release RESETN on kernel boot */  
+   sdhci1_pwrseq: sdhci1_pwrseq {
+      compatible = "mmc-pwrseq-simple";
+      /* reset-gpios = <&gpio 7 1>;  // MIO[7] for RESETN, Active low, JT5 strapped to pins 2-3 */
+      reset-gpios = <&gpio 78 1>;  // device pin A3 for RESETN, Active low, JT5 strapped to pins 1-2
+      post-power-on-delay-ms = <10>;
+   };
+};
+
+&sdhci1 {
+   status = "okay";
+   bus-width= <4>;
+   max-frequency = <50000000>;
+   broken-cd;
+	non-removeable;
+   mmc-pwrseq = <&sdhci1_pwrseq>;
+};
+
+
+//TC &sdhci1 {
+//TC 	status = "okay";
+//TC  bus-width= <4>;
+//TC 	max-frequency = <50000000>;
+//TC 	non-removeable;
+//TC //	mmc-pwrseq = <&sdhci1_pwrseq>;
+
+//TC    wilc_sdio@0 {
+//TC 		status = "okay";
+//TC       reg = <0>; 
+//TC       compatible = "microchip,wilc3000";
+//TC 		chip_en-gpios = <&gpio 8 0>;  	/* MIO[8] */
+//TC      reset-gpios = <&gpio 7 0>;	/* MIO[7] */
+//TC       reset-gpios = <&gpio 78 1>;  // device pin A3 for RESETN, Active low, JT5 strapped to pins 1-2
+//TC 		irq-gpios = <&gpio 76 1>;	/* MIO[76] */
+//TC 		bus-width = <4>;
+//TC 	};
+//TC };
+

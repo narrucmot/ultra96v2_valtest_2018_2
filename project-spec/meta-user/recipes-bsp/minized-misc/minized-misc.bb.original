@@ -1,0 +1,28 @@
+DESCRIPTION = "Custom / Misc files for MiniZed"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+
+#FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+
+SRC_URI += "file://minized-mount.sh \
+	    file://wpa_supplicant.conf \
+	    file://wifi.sh \
+	    file://bt.sh \
+	    file://ble.sh \
+" 
+
+
+do_install() {
+	install -d ${D}/usr/local/bin/
+	install -m 755 ${WORKDIR}/wpa_supplicant.conf ${D}/usr/local/bin/
+	install -m 755 ${WORKDIR}/wifi.sh ${D}/usr/local/bin/
+	install -m 755 ${WORKDIR}/bt.sh ${D}/usr/local/bin/
+	install -m 755 ${WORKDIR}/ble.sh ${D}/usr/local/bin/
+}
+
+FILES_${PN} = " \
+		/usr/local/bin/wpa_supplicant.conf \
+		/usr/local/bin/wifi.sh \
+		/usr/local/bin/bt.sh \
+		/usr/local/bin/ble.sh \
+"
