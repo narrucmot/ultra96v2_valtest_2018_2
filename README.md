@@ -1,6 +1,7 @@
-### Prereqs: ###
+## Prereqs: ##
 1. PetaLinux, Xilinx tools 2018.2
-2. U96 v2 with zero ohm in following position:  ![alt text](http://github.com/FredKellerman/ultra96v2_valtest_2018_2/jump.png)
+2. U96 v2 with zero ohm in following position:
+![alt tag](./jump.jpg)
 
 ### How to build and attempt wifi launch: ###
 
