@@ -1,6 +1,7 @@
 ## Prereqs: ##
 1. PetaLinux, Xilinx tools 2018.2
-2. U96 v2 with zero ohm in following position:
+2. Avnet JTAG/Serial board attached to U96 V2
+3. U96 v2 with zero ohm in following position:
 ![alt tag](./jump.jpg)
 
 ### How to build and attempt wifi launch: ###
@@ -13,4 +14,4 @@
 6.  petalinux-build
 7.  petalinux-package --boot --fsbl images/linux/zynqmp_fsbl.elf --fpga ./images/linux/system.bit --uboot --force
 8.  Copy files to SD card
-9.  Boot, login (root, root), execute /home/root/wifi.sh
+9.  Boot, login via serial (root, root), execute /home/root/wifi.sh
